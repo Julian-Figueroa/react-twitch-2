@@ -55,12 +55,13 @@ export const fetchStream = id => async dispatch => {
 };
 
 export const editStream = (id, formValues) => async dispatch => {
-  const res = await axios.put(`/streams/${id}`, formValues);
+  const res = await axios.patch(`/streams/${id}`, formValues);
 
   dispatch({
     type: EDIT_STREAM,
     payload: res.data
   });
+  history.push('/');
 };
 
 export const deleteStream = id => async dispatch => {
@@ -70,4 +71,5 @@ export const deleteStream = id => async dispatch => {
     type: DELETE_STREAM,
     payload: id
   });
+  history.push('/');
 };
